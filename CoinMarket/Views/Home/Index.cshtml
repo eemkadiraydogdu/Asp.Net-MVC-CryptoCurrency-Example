@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model CryptoResultModel
+
+<div class="text-center">
+    <h1 class="display-4 mb-3">Welcome To CoinMarket</h1>
+   
+
+<div class="row">
+    @foreach (var item in Model.result)
+    {
+    <div class="card shadow-lg border-primary mb-3 me-3" style="max-width: 18rem;">
+                <div class="card-header">@item.code
+                @if (item.changeHour > 0)
+                {                  
+                    <i class="fa-solid fa-arrow-trend-up text-success"></i>
+                }
+                else
+                {
+                    <i class="fa-solid fa-arrow-trend-down text-danger"></i>
+                }
+                </div>
+        <div class="card-body">
+                    @if (item.changeHour > 0)
+                    {
+                        <h5 class="card-title text-success">$ @item.pricestr</h5>
+                        
+                    }
+                    else
+                    {
+                        <h5 class="card-title text-danger">$ @item.pricestr</h5>
+                        
+                    }
+                    @if (item.changeHour > 0)
+                    {
+                        <p class="card-title text-success">1h: @item.changeHour%</p>
+
+                    }
+                    else
+                    {
+                        <p class="card-title text-danger">1h: @item.changeHour%</p>
+
+                    }
+                    @if (item.changeDay > 0)
+                    {
+                        <p class="card-title text-success">24h: @item.changeDay%</p>
+
+                    }
+                    else
+                    {
+                        <p class="card-title text-danger">24h: @item.changeDay%</p>
+
+                    }
+                    @if (item.changeWeek > 0)
+                    {
+                        <p class="card-title text-success">7d: @item.changeWeek%</p>
+
+                    }
+                    else
+                    {
+                        <p class="card-title text-danger">7d: @item.changeWeek%</p>
+
+                    }
+
+        </div>
+        <div class="card-footer">
+                    
+                 <p class="card-title mb-25" style="font-size:13px"> Volume: @item.volumestr</p>
+                <p class="card-title mb-25" style="font-size:13px"> MarketCap: @item.marketCapstr</p>
+        </div>
+    </div>
+    }
+    </div>
+</div>
+
+<p>Designed by Kadir Aydogdu----eemkadiraydogdu@gmail.com</p>
